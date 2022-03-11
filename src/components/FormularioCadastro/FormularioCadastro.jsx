@@ -4,10 +4,19 @@ import { Checkbox } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
 import { Switch } from "@material-ui/core";
 import { FormControlLabel } from "@material-ui/core";
+import { useState } from "react";
 function FormularioCadastro(){
+    const [nome,setNome] = useState("Vicente");
     return(
         <form>
-            <TextField variant="outlined" id = "nome" label="Nome" fullWidth margin="normal"/>
+            <TextField variant="outlined" id = "nome" label="Nome" fullWidth margin="normal"
+            value={nome}
+            onChange={(e)=>{
+                setNome(e.target.value);
+                if(nome.length >= 3){
+                    setNome(nome.substring(0,3));
+                }
+            }}/>
           
             <TextField variant="outlined" id = "sobrenome" label="Sobrenome" fullWidth margin="normal"/>
 
