@@ -6,19 +6,32 @@ import { Switch } from "@material-ui/core";
 import { FormControlLabel } from "@material-ui/core";
 import { useState } from "react";
 function FormularioCadastro(){
-    const [nome,setNome] = useState("Vicente");
+    const [nome,setNome] = useState("");
+    const [sobrenome,setSobrenome]= useState("")
     return(
-        <form>
+        <form
+        onSubmit={(evt)=>{
+            evt.preventDefault();
+            console.log(nome,sobrenome);
+        }}>
             <TextField variant="outlined" id = "nome" label="Nome" fullWidth margin="normal"
             value={nome}
             onChange={(e)=>{
-                setNome(e.target.value);
-                if(nome.length >= 3){
-                    setNome(nome.substring(0,3));
+                
+                let nomeTmp = e.target.value;
+                if(nomeTmp.length >= 3){
+                    nomeTmp = nomeTmp.substring(0,3);
                 }
+                setNome(nomeTmp);
+               
             }}/>
           
-            <TextField variant="outlined" id = "sobrenome" label="Sobrenome" fullWidth margin="normal"/>
+            <TextField variant="outlined" id = "sobrenome" label="Sobrenome" fullWidth margin="normal"
+            value={sobrenome}
+            onChange={(e)=>{
+                setSobrenome(e.target.value);
+                
+            }}/>
 
             <TextField variant="outlined" id = "cpf" label="CPF" fullWidth margin="normal"/>
 
