@@ -1,5 +1,5 @@
 import './App.css';
-import React,{Component, Fragment} from 'react'
+import React,{Component} from 'react'
 import FormularioCadastro from './components/FormularioCadastro/FormularioCadastro';
 import { Container } from '@material-ui/core';
 import { Typography } from '@material-ui/core';

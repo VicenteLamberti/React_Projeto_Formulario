@@ -1,18 +1,26 @@
 import React from "react"
 import Button from "@material-ui/core/Button"
-import { Checkbox } from "@material-ui/core";
+
 import { TextField } from "@material-ui/core";
 import { Switch } from "@material-ui/core";
 import { FormControlLabel } from "@material-ui/core";
 import { useState } from "react";
 function FormularioCadastro(){
     const [nome,setNome] = useState("");
-    const [sobrenome,setSobrenome]= useState("")
+    const [sobrenome,setSobrenome]= useState("");
+    const [cpf,setCpf]= useState("");
+    const [promocoes,setPromocoes]= useState(true);
+    const [novidades,setNovidades]= useState(true);
+
+    //Aqui deveria dar erro ver qual extensao
+    // if(true){
+    //     setNome("");
+    // }
     return(
         <form
         onSubmit={(evt)=>{
             evt.preventDefault();
-            console.log(nome,sobrenome);
+            console.log({nome,sobrenome,cpf,promocoes,novidades});
         }}>
             <TextField variant="outlined" id = "nome" label="Nome" fullWidth margin="normal"
             value={nome}
@@ -33,15 +41,26 @@ function FormularioCadastro(){
                 
             }}/>
 
-            <TextField variant="outlined" id = "cpf" label="CPF" fullWidth margin="normal"/>
+            <TextField variant="outlined" id = "cpf" label="CPF" fullWidth margin="normal"
+            value={cpf}
+            onChange={(e)=>{
+                setCpf(e.target.value);
+                
+            }}/>
 
             <FormControlLabel
             label="Promoções"
-            control={ <Switch color="primary" name="promocoes"  />}/>
+            control={ <Switch color="primary" name="promocoes"  checked={promocoes}
+            onChange={(evt)=>{
+                setPromocoes(evt.target.checked);
+            }}/>}/>
            
             <FormControlLabel
             label="Novidades"
-            control={  <Switch color="primary" name="novidades"  />}/>
+            control={  <Switch color="primary" name="novidades" checked={novidades} 
+            onChange={(evt)=>{
+                setNovidades(evt.target.checked);
+            }}/>}/>
           
 
             <Button variant="contained" color="primary" type="submit">Cadastrar</Button>
