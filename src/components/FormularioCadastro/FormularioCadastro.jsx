@@ -6,12 +6,13 @@ import { Switch } from "@material-ui/core";
 import { FormControlLabel } from "@material-ui/core";
 import { useState } from "react";
 
-function FormularioCadastro({aoEnviar}){
+function FormularioCadastro({aoEnviar,validar}){
     const [nome,setNome] = useState("");
     const [sobrenome,setSobrenome]= useState("");
     const [cpf,setCpf]= useState("");
     const [promocoes,setPromocoes]= useState(true);
     const [novidades,setNovidades]= useState(true);
+    const [erros, setErros]=useState({cpf:{valido:true,texto:""}});
 
     //Aqui deveria dar erro ver qual extensao
     // if(true){
@@ -42,7 +43,16 @@ function FormularioCadastro({aoEnviar}){
                 
             }}/>
 
-            <TextField variant="outlined" id = "cpf" label="CPF" fullWidth margin="normal"
+            <TextField variant="outlined" id = "cpf" label="CPF" fullWidth margin="normal" 
+            error={!erros.cpf.valido} 
+            helperText={erros.cpf.texto}
+            onBlur={(evt)=>{
+            let validacao = validar(cpf);
+               setErros({cpf:validacao});
+            }}
+
+           
+
             value={cpf}
             onChange={(e)=>{
                 setCpf(e.target.value);
