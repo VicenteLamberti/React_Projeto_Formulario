@@ -24,7 +24,7 @@ function DadosPessoais({aoEnviar,validar}){
             evt.preventDefault();
             aoEnviar({nome,sobrenome,cpf,promocoes,novidades})
         }}>
-            <TextField variant="outlined" id = "nome" label="Nome" fullWidth margin="normal"
+            <TextField variant="outlined" id = "nome" label="Nome" fullWidth margin="normal" required
             value={nome}
             onChange={(e)=>{
                 
@@ -36,7 +36,7 @@ function DadosPessoais({aoEnviar,validar}){
                
             }}/>
           
-            <TextField variant="outlined" id = "sobrenome" label="Sobrenome" fullWidth margin="normal"
+            <TextField variant="outlined" id = "sobrenome" label="Sobrenome" fullWidth margin="normal" required
             value={sobrenome}
             onChange={(e)=>{
                 setSobrenome(e.target.value);
@@ -74,7 +74,7 @@ function DadosPessoais({aoEnviar,validar}){
             }}/>}/>
           
 
-            <Button variant="contained" color="primary" type="submit">Cadastrar</Button>
+            <Button variant="contained" color="primary" type="submit">Próximo</Button>
         </form>
     )
 }
