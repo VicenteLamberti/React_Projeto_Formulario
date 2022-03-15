@@ -1,4 +1,5 @@
 import React from "react"
+import DadosEntrega from "./DadosEntrega";
 
 
 
@@ -12,6 +13,7 @@ function FormularioCadastro({ aoEnviar, validar }) {
         <>
             <DadosPessoais aoEnviar={aoEnviar} validar={validar} />
             <DadosUsuario/>
+            <DadosEntrega/>
         </>
     )
 }
