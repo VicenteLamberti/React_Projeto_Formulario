@@ -5,6 +5,7 @@ import { Container } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 
 import {validarCPF,validarSenha} from './models/cadastro'
+import ValidacoesCadastro from './contexts/ValidacoesCadastro';
 class App extends Component{
   render(){
     return (
@@ -12,7 +13,9 @@ class App extends Component{
        <Typography align="center" variant="h3" component="h1" >
           Formulário de Cadastro
         </Typography>
-        <FormularioCadastro aoEnviar={aoEnviarForm} validacoes={{cpf:validarCPF, senha:validarSenha}}/>
+        <ValidacoesCadastro.Provider value ={{cpf:validarCPF, senha:validarSenha}}>
+          <FormularioCadastro aoEnviar={aoEnviarForm}/>
+        </ValidacoesCadastro.Provider>
       </Container>
       
     );

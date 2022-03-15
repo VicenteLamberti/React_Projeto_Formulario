@@ -5,8 +5,12 @@ import { TextField } from "@material-ui/core";
 import { Switch } from "@material-ui/core";
 import { FormControlLabel } from "@material-ui/core";
 import { useState } from "react";
+import { useContext } from "react";
+import ValidacoesCadastro from "../../contexts/ValidacoesCadastro";
 
-function DadosPessoais({ aoEnviar, validacoes }) {
+function DadosPessoais({ aoEnviar }) {
+    const validacoes= useContext(ValidacoesCadastro)
+
     const [nome, setNome] = useState("");
     const [sobrenome, setSobrenome] = useState("");
     const [cpf, setCpf] = useState("");
